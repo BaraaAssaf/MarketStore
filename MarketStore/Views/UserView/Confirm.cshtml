@@ -1,0 +1,45 @@
+﻿
+@{
+        Layout = "~/Views/Shared/_UserDashboard.cshtml";
+}
+
+
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Payment and Confirm Order</h5>
+
+              <!-- Floating Labels Form -->
+              <form asp-action="Confirm" class="row g-3">
+                <div class="col-md-12">
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="floatingName" name="cardnumber" placeholder="Card Number">
+                    <label for="floatingName">Card Number</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="password"  class="form-control" id="floatingEmail" name="SecurityCode" placeholder="***" >
+                    <label for="floatingEmail">Security Code</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="date" class="form-control" id="floatingPassword" name="ExpiryDate" placeholder="">
+                    <label for="floatingPassword">ExpiryDate</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="Address" id="Address"  name="Address"  style="height: 100px;"></textarea>
+                    <label for="floatingTextarea">Address</label>
+                  </div>
+                </div>
+  
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>           
+                </div>
+              </form><!-- End floating Labels Form -->
+
+            </div>
+          </div>

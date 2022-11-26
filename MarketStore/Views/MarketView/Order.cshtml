@@ -1,0 +1,82 @@
+﻿@model Tuple<IEnumerable<Order2>, IEnumerable<Productorder>>
+
+@{
+    Layout = "~/Views/Shared/_MarketDashboard.cshtml";
+}
+
+<h1>Order</h1>
+
+
+<div class="row">
+
+           <div class="col">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">Today order</h4>
+                <p class="card-category"></p>
+            </div>
+            <div class="card-body table-responsive">
+                <table  class="example table table-hover">
+                    <thead class="text">
+                        <tr>                    
+                            <th>Store Name</th>
+                            <th>User Name</th>
+                            <th>Order Date</th>
+                            <th>Location Delivery</th>         
+                            <th>Total Price</th>
+                            <th></th>            
+                        </tr>
+                    </thead>
+                 <tbody>
+          @foreach (var item in Model.Item1)
+           {
+
+
+            <tr>
+                <td>@item.Store.StoreName</td>
+                <td>@item.User.Fname @item.User.Lname</td>
+                <td>@item.OrderDate</td>  
+                <td>@item.LocationDelivery</td>
+                <td>@item.Totalprice</td>  
+                     <td> <form asp-action="Order"  asp-route-id="@item.Id">
+                   <button type="submit" class="btn btn-primary">Delivery</button>
+                </form></td>     
+                <td></td>  
+                <tr>
+             
+                        <tr class="text-warning">                                              
+                            <th></th>
+                            <th>Product Name</th>
+                            <th>quantity</th>
+                            <th>Price</th>         
+                            <th></th>
+                        </tr>
+                 
+                        
+          @foreach (var item1 in Model.Item2.Where(x => x.OrderId == item.Id))
+             {
+            <tr>
+                <td></td>
+                <td>@item1.Product.ProductName</td>
+                <td>@item1.Quntity</td>  
+                <td>@item1.Product.SellingPrice*@item1.Quntity</td>
+                
+            </tr>}
+                                           </tr>
+          </tr>
+
+
+<tr>
+    <td></td>
+    <td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td><td></td><td></td><td></td>
+</tr>
+         
+           }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

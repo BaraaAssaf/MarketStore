@@ -1,0 +1,93 @@
+﻿@model Tuple<IEnumerable<Order2> , IEnumerable<Productorder>>
+@{
+    ViewData["Title"] = "Invoice";
+    Layout = "~/Views/Shared/_UserDashboard.cshtml";
+
+}
+
+
+
+    
+     
+
+
+<h1>Invoice</h1>
+   <section class="section">
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">Invoice </h5>           
+                          <div class="accordion" id="accordionExample">
+                              @foreach(var item in Model.Item1)
+                              {
+                              <div class="accordion-item">
+                                  <table class="T table">
+                                  <thead>
+                                      <tr>
+                                         <th>
+                                            Product Name
+                                         </th>
+                                         <th>Quntity
+                                         </th>
+                                         <th>Price</th>
+                                      </tr>
+                                </thead>
+                                 <tbody>
+                                 @foreach(var item1 in Model.Item2)
+                                {
+                                    if (item1.OrderId == item.Id)
+                                    {
+                                         <tr>
+                                             <td>
+                                                 @item1.Product.ProductName
+                                             </td>
+                                             <td>
+                                                 @item1.Quntity
+                                             </td>
+                                             <td>
+                                                 @item1.Product.SellingPrice
+                                             </td>
+                                         </tr>
+                                    }
+
+                                }
+                                    </tbody>
+                                 <tfoot>
+                                  <tr>
+                                     <td>Total Price</td>
+                                     <td>@item.Totalprice </td>
+                                 </tr>
+     
+                               </tfoot>
+                             </table>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>                
+                              }                
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+<script>
+    $(document).ready(function () {
+        $('.T').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>

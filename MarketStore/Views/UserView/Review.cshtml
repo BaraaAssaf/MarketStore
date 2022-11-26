@@ -1,0 +1,33 @@
+﻿@model MarketStore.Models.Testimonial
+
+@{  
+      Layout = "~/Views/Shared/_UserDashboard.cshtml";
+}
+
+       
+         <h2>Your opinion is important to help us improve : </h2>
+
+          <form asp-action="Review">
+                  <div asp-validation-summary="ModelOnly" class="text-danger"></div>   
+                     
+              <div class="row">
+
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                 <label hidden asp-for="UserId" class="control-label"></label>
+                <select hidden asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>         
+                </div>
+              </div>
+          
+              <div class="form-group mt-3">
+               <label asp-for="Masseage" class="control-label"></label>             
+               <input asp-for="Masseage" class="form-control"  rows="5"  required />
+                <span asp-validation-for="Masseage" class="text-danger"></span>
+              </div>
+             <div class="form-group mt-3">             
+                <label hidden asp-for="StatusTestimonials" class="control-label"></label>
+                <input hidden asp-for="StatusTestimonials" class="form-control" />
+                <span hidden asp-validation-for="StatusTestimonials" class="text-danger"></span>
+              </div> 
+
+              <div class="text-center"><input type="submit" value="Send Review" class="btn btn-primary" /></div>
+         </form>
